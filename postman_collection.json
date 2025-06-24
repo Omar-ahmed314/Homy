@@ -1,0 +1,313 @@
+{
+    "info": {
+        "_postman_id": "ecommerce-api-collection-2025",
+        "name": "Simple Ecommerce API",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Register",
+            "request": {
+                "method": "POST",
+                "header": [
+                    { "key": "Content-Type", "value": "application/json" }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"name\": \"Test User\",\n  \"email\": \"test@example.com\",\n  \"password\": \"password\"\n}"
+                },
+                "url": {
+                    "raw": "{{base_url}}/api/register",
+                    "host": ["{{base_url}}"],
+                    "path": ["api", "register"]
+                }
+            }
+        },
+        {
+            "name": "Login",
+            "request": {
+                "method": "POST",
+                "header": [
+                    { "key": "Content-Type", "value": "application/json" }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"email\": \"test@example.com\",\n  \"password\": \"password\"\n}"
+                },
+                "url": {
+                    "raw": "{{base_url}}/api/login",
+                    "host": ["{{base_url}}"],
+                    "path": ["api", "login"]
+                }
+            }
+        },
+        {
+            "name": "Logout",
+            "request": {
+                "method": "POST",
+                "header": [
+                    { "key": "Authorization", "value": "Bearer {{token}}" },
+                    { "key": "Content-Type", "value": "application/json" }
+                ],
+                "url": {
+                    "raw": "{{base_url}}/api/logout",
+                    "host": ["{{base_url}}"],
+                    "path": ["api", "logout"]
+                }
+            }
+        },
+        {
+            "name": "List Products",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "{{base_url}}/api/products",
+                    "host": ["{{base_url}}"],
+                    "path": ["api", "products"]
+                }
+            }
+        },
+        {
+            "name": "Show Product",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "{{base_url}}/api/products/1",
+                    "host": ["{{base_url}}"],
+                    "path": ["api", "products", "1"]
+                }
+            }
+        },
+        {
+            "name": "Create Product (Admin)",
+            "request": {
+                "method": "POST",
+                "header": [
+                    { "key": "Authorization", "value": "Bearer {{token}}" },
+                    { "key": "Content-Type", "value": "application/json" }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"name\": \"New Product\",\n  \"description\": \"A new product description\",\n  \"price\": 99.99,\n  \"stock\": 10\n}"
+                },
+                "url": {
+                    "raw": "{{base_url}}/api/products",
+                    "host": ["{{base_url}}"],
+                    "path": ["api", "products"]
+                }
+            }
+        },
+        {
+            "name": "Update Product (Admin)",
+            "request": {
+                "method": "PUT",
+                "header": [
+                    { "key": "Authorization", "value": "Bearer {{token}}" },
+                    { "key": "Content-Type", "value": "application/json" }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"name\": \"Updated Product\",\n  \"description\": \"Updated description\",\n  \"price\": 199.99,\n  \"stock\": 5\n}"
+                },
+                "url": {
+                    "raw": "{{base_url}}/api/products/1",
+                    "host": ["{{base_url}}"],
+                    "path": ["api", "products", "1"]
+                }
+            }
+        },
+        {
+            "name": "Delete Product (Admin)",
+            "request": {
+                "method": "DELETE",
+                "header": [
+                    { "key": "Authorization", "value": "Bearer {{token}}" }
+                ],
+                "url": {
+                    "raw": "{{base_url}}/api/products/1",
+                    "host": ["{{base_url}}"],
+                    "path": ["api", "products", "1"]
+                }
+            }
+        },
+        {
+            "name": "List Orders",
+            "request": {
+                "method": "GET",
+                "header": [
+                    { "key": "Authorization", "value": "Bearer {{token}}" }
+                ],
+                "url": {
+                    "raw": "{{base_url}}/api/orders",
+                    "host": ["{{base_url}}"],
+                    "path": ["api", "orders"]
+                }
+            }
+        },
+        {
+            "name": "Create Order",
+            "request": {
+                "method": "POST",
+                "header": [
+                    { "key": "Authorization", "value": "Bearer {{token}}" },
+                    { "key": "Content-Type", "value": "application/json" }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"items\": [\n    {\n      \"product_id\": 1,\n      \"quantity\": 2\n    }\n  ]\n}"
+                },
+                "url": {
+                    "raw": "{{base_url}}/api/orders",
+                    "host": ["{{base_url}}"],
+                    "path": ["api", "orders"]
+                }
+            }
+        },
+        {
+            "name": "Show Order",
+            "request": {
+                "method": "GET",
+                "header": [
+                    { "key": "Authorization", "value": "Bearer {{token}}" }
+                ],
+                "url": {
+                    "raw": "{{base_url}}/api/orders/1",
+                    "host": ["{{base_url}}"],
+                    "path": ["api", "orders", "1"]
+                }
+            }
+        },
+        {
+            "name": "Update Order (Admin/User)",
+            "request": {
+                "method": "PUT",
+                "header": [
+                    { "key": "Authorization", "value": "Bearer {{token}}" },
+                    { "key": "Content-Type", "value": "application/json" }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{}"
+                },
+                "url": {
+                    "raw": "{{base_url}}/api/orders/1",
+                    "host": ["{{base_url}}"],
+                    "path": ["api", "orders", "1"]
+                }
+            }
+        },
+        {
+            "name": "Delete Order (Admin/User)",
+            "request": {
+                "method": "DELETE",
+                "header": [
+                    { "key": "Authorization", "value": "Bearer {{token}}" }
+                ],
+                "url": {
+                    "raw": "{{base_url}}/api/orders/1",
+                    "host": ["{{base_url}}"],
+                    "path": ["api", "orders", "1"]
+                }
+            }
+        },
+        {
+            "name": "Update Order Status (Admin Only)",
+            "request": {
+                "method": "PUT",
+                "header": [
+                    { "key": "Authorization", "value": "Bearer {{token}}" },
+                    { "key": "Content-Type", "value": "application/json" }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"status\": \"shipped\"\n}"
+                },
+                "url": {
+                    "raw": "{{base_url}}/api/orders/1/status",
+                    "host": ["{{base_url}}"],
+                    "path": ["api", "orders", "1", "status"]
+                }
+            }
+        },
+        {
+            "name": "List Users (Admin Only)",
+            "request": {
+                "method": "GET",
+                "header": [
+                    { "key": "Authorization", "value": "Bearer {{token}}" }
+                ],
+                "url": {
+                    "raw": "{{base_url}}/api/users",
+                    "host": ["{{base_url}}"],
+                    "path": ["api", "users"]
+                }
+            }
+        },
+        {
+            "name": "Show User (Admin Only)",
+            "request": {
+                "method": "GET",
+                "header": [
+                    { "key": "Authorization", "value": "Bearer {{token}}" }
+                ],
+                "url": {
+                    "raw": "{{base_url}}/api/users/1",
+                    "host": ["{{base_url}}"],
+                    "path": ["api", "users", "1"]
+                }
+            }
+        },
+        {
+            "name": "Create User (Admin Only)",
+            "request": {
+                "method": "POST",
+                "header": [
+                    { "key": "Authorization", "value": "Bearer {{token}}" },
+                    { "key": "Content-Type", "value": "application/json" }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"name\": \"Admin User\",\n  \"email\": \"admin@example.com\",\n  \"password\": \"password\",\n  \"is_admin\": true\n}"
+                },
+                "url": {
+                    "raw": "{{base_url}}/api/users",
+                    "host": ["{{base_url}}"],
+                    "path": ["api", "users"]
+                }
+            }
+        },
+        {
+            "name": "Update User (Admin Only)",
+            "request": {
+                "method": "PUT",
+                "header": [
+                    { "key": "Authorization", "value": "Bearer {{token}}" },
+                    { "key": "Content-Type", "value": "application/json" }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"name\": \"Updated Admin\"\n}"
+                },
+                "url": {
+                    "raw": "{{base_url}}/api/users/1",
+                    "host": ["{{base_url}}"],
+                    "path": ["api", "users", "1"]
+                }
+            }
+        },
+        {
+            "name": "Delete User (Admin Only)",
+            "request": {
+                "method": "DELETE",
+                "header": [
+                    { "key": "Authorization", "value": "Bearer {{token}}" }
+                ],
+                "url": {
+                    "raw": "{{base_url}}/api/users/1",
+                    "host": ["{{base_url}}"],
+                    "path": ["api", "users", "1"]
+                }
+            }
+        }
+    ]
+}
